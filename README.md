@@ -2,7 +2,7 @@
 
 ## Building
 
-First, install all dependencies of `fc` library. On Ubuntu 20.04, run:
+First, install dependencies of `fc` library. On Ubuntu 20.04, run (assuming you use `apt` package manager):
 ```
 sudo apt-get install \
 libboost-thread-dev \
@@ -21,4 +21,22 @@ libncurses-dev \
 libreadline-dev \
 zlib1g-dev \
 libbz2-dev
+```
+
+Then create a new directory and run CMake by entering the following commands:
+
+```
+mkdir build
+cd build
+cmake ..
+```
+
+Then simply build the project by running:
+```
+cmake --build .
+```
+
+CMake should create a new executable in the `build/` directory, called `expressions`. Run it by running:
+```
+./expressions
 ```
