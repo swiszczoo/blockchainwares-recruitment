@@ -117,4 +117,6 @@ public:
     virtual int operator()(div& expr) = 0;
 };
 
+void run_visitor();
+
 };

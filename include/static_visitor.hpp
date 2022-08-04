@@ -77,4 +77,6 @@ private:
     int _op1, _op2;
 };
 
+void run_visitor();
+
 };

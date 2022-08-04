@@ -12,7 +12,7 @@ struct evaluator {
             if (!first) {
                 std::cout << " + ";
             }
-            
+
             std::cout << operand;
 
             first = false;
@@ -20,7 +20,7 @@ struct evaluator {
         }
 
         std::cout << " = " << sum << std::endl;
-        
+
         return sum;
     }
 
@@ -42,7 +42,7 @@ struct evaluator {
         }
 
         std::cout << " = " << result << std::endl;
-        
+
         return result;
     }
 
@@ -52,7 +52,7 @@ struct evaluator {
         int result = expr.first_operand() - expr.second_operand();
         std::cout << expr.first_operand() << " - " << expr.second_operand()
                   << " = " << result << std::endl;
-        
+
         return result;
     }
 
@@ -62,7 +62,7 @@ struct evaluator {
         int result = expr.first_operand() / expr.second_operand();
         std::cout << expr.first_operand() << " / " << expr.second_operand()
                   << " = " << result << std::endl;
-        
+
         return result;
     }
 };
