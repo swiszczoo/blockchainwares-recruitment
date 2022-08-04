@@ -1,6 +1,6 @@
 # BlockChainWares recruitment task
 
-## Building
+## Building and running
 
 First, install dependencies of `fc` library. On Ubuntu 20.04, run (assuming you use `apt` package manager):
 ```
@@ -36,7 +36,7 @@ Then simply build the project by running:
 cmake --build .
 ```
 
-CMake should create a new executable in the `build/` directory, called `expressions`. Run it by running:
+CMake should create a new executable in the `build/` directory, called `expressions`. Run it by executing:
 ```
 ./expressions
 ```

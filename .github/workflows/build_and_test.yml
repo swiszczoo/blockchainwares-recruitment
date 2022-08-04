@@ -1,0 +1,44 @@
+name: build_and_test
+on: [push]
+
+jobs:
+  build_and_test:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: true
+
+      - name: Install dependencies
+        run: |
+          apt-get install \
+          libboost-thread-dev \
+          libboost-date-time-dev \
+          libboost-system-dev \
+          libboost-filesystem-dev \
+          libboost-program-options-dev \
+          libboost-serialization-dev \
+          libboost-chrono-dev \
+          libboost-test-dev \
+          libboost-context-dev \
+          libboost-locale-dev \
+          libboost-iostreams-dev \
+          libboost-coroutine-dev \
+          libncurses-dev \
+          libreadline-dev \
+          zlib1g-dev \
+          libbz2-dev
+      
+      - name: Run CMake to generate build files
+        run: |
+          mkdir build
+          cd build
+          cmake ..
+
+      - name: Build solution
+        run: cmake --build ./build
+
+      - name: Run solution
+        run: ./build/expressions
+
+      
