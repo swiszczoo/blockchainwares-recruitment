@@ -1,82 +1,25 @@
 #pragma once
-#include <initializer_list>
-#include <vector>
+#include <static_expressions.hpp>
+
+#include <ostream>
 
 namespace static_v {
 
-class add {
+class static_visitor_impl {
 public:
-    add(std::initializer_list<int> summands) noexcept;
+    using result_type = int;
 
-    inline std::vector<int>::const_iterator begin() const
-    {
-        return _summands.begin();
-    }
+    static_visitor_impl(std::ostream& ostream) noexcept;
 
-    inline std::vector<int>::const_iterator end() const
-    {
-        return _summands.end();
-    }
-
+    int operator()(add& expr) const;
+    int operator()(sub& expr) const;
+    int operator()(mul& expr) const;
+    int operator()(div& expr) const;
+    
 private:
-    std::vector<int> _summands;
+    std::ostream& _os;
 };
 
-class sub {
-public:
-    explicit sub(int operand1) noexcept;
-    explicit sub(int operand1, int operand2) noexcept;
-
-    inline int first_operand() const
-    {
-        return _op1;
-    }
-
-    inline int second_operand() const
-    {
-        return _op2;
-    }
-
-private:
-    int _op1, _op2;
-};
-
-class mul {
-public:
-    mul(std::initializer_list<int> factors) noexcept;
-
-    inline std::vector<int>::const_iterator begin() const
-    {
-        return _factors.begin();
-    }
-
-    inline std::vector<int>::const_iterator end() const
-    {
-        return _factors.end();
-    }
-
-private:
-    std::vector<int> _factors;
-};
-
-class div {
-public:
-    explicit div(int operand1, int operand2) noexcept;
-
-    inline int first_operand() const
-    {
-        return _op1;
-    }
-
-    inline int second_operand() const
-    {
-        return _op2;
-    }
-
-private:
-    int _op1, _op2;
-};
-
-void run_visitor();
+void run_visitor_demo(std::ostream& ostream);
 
 };
