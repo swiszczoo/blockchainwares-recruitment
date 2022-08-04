@@ -3,15 +3,16 @@
 
 struct evaluator {
     template <class add>
-    static void eval_add(add& expr)
+    static int eval_add(add& expr)
     {
         bool first = true;
         int sum = 0;
 
-        for (int operand : expr)
-        {
-            if (!first)
+        for (int operand : expr) {
+            if (!first) {
                 std::cout << " + ";
+            }
+            
             std::cout << operand;
 
             first = false;
@@ -19,18 +20,21 @@ struct evaluator {
         }
 
         std::cout << " = " << sum << std::endl;
+        
+        return sum;
     }
 
     template <class mul>
-    static void eval_mul(mul& expr)
+    static int eval_mul(mul& expr)
     {
         bool first = true;
         int result = 1;
 
-        for (int operand : expr)
-        {
-            if (!first)
+        for (int operand : expr) {
+            if (!first) {
                 std::cout << " * ";
+            }
+
             std::cout << operand;
 
             first = false;
@@ -38,19 +42,27 @@ struct evaluator {
         }
 
         std::cout << " = " << result << std::endl;
+        
+        return result;
     }
 
     template <class sub>
-    static void eval_sub(sub& expr)
+    static int eval_sub(sub& expr)
     {
         int result = expr.first_operand() - expr.second_operand();
-        std::cout << expr.first_operand() << " - " << expr.second_operand() << " = " << result << std::endl;
+        std::cout << expr.first_operand() << " - " << expr.second_operand()
+                  << " = " << result << std::endl;
+        
+        return result;
     }
 
     template <class div>
-    static void eval_div(div& expr)
+    static int eval_div(div& expr)
     {
         int result = expr.first_operand() / expr.second_operand();
-        std::cout << expr.first_operand() << " / " << expr.second_operand() << " = " << result << std::endl;
+        std::cout << expr.first_operand() << " / " << expr.second_operand()
+                  << " = " << result << std::endl;
+        
+        return result;
     }
 };

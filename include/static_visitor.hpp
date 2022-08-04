@@ -2,29 +2,11 @@
 #include <initializer_list>
 #include <vector>
 
-namespace abstract {
+namespace static_v {
 
-/* Forward declarations */
-class visitor;
-
-class expression {
-public:
-    virtual ~expression() = default;
-
-    expression() = default;
-    expression(const expression& other) = default;
-    expression(expression&& other) = default;
-    expression& operator=(const expression& other) = default;
-    expression& operator=(expression&& other) = default;
-
-    virtual int accept(visitor& visitor) = 0;
-};
-
-class add : public expression {
+class add {
 public:
     add(std::initializer_list<int> summands) noexcept;
-
-    int accept(visitor& visitor) override;
 
     inline std::vector<int>::const_iterator begin() const
     {
@@ -40,12 +22,10 @@ private:
     std::vector<int> _summands;
 };
 
-class sub : public expression {
+class sub {
 public:
     explicit sub(int operand1) noexcept;
     explicit sub(int operand1, int operand2) noexcept;
-
-    int accept(visitor& visitor) override;
 
     inline int first_operand() const
     {
@@ -61,11 +41,9 @@ private:
     int _op1, _op2;
 };
 
-class mul : public expression {
+class mul {
 public:
     mul(std::initializer_list<int> factors) noexcept;
-
-    int accept(visitor& visitor) override;
 
     inline std::vector<int>::const_iterator begin() const
     {
@@ -81,11 +59,9 @@ private:
     std::vector<int> _factors;
 };
 
-class div : public expression {
+class div {
 public:
     explicit div(int operand1, int operand2) noexcept;
-
-    int accept(visitor& visitor) override;
 
     inline int first_operand() const
     {
@@ -99,22 +75,6 @@ public:
 
 private:
     int _op1, _op2;
-};
-
-class visitor {
-public:
-    virtual ~visitor() = default;
-
-    visitor() = default;
-    visitor(const visitor& other) = default;
-    visitor(visitor&& other) = default;
-    visitor& operator=(const visitor& other) = default;
-    visitor& operator=(visitor&& other) = default;
-
-    virtual int operator()(add& expr) = 0;
-    virtual int operator()(sub& expr) = 0;
-    virtual int operator()(mul& expr) = 0;
-    virtual int operator()(div& expr) = 0;
 };
 
 };

@@ -11,6 +11,7 @@ add_subdirectory( fc )
 add_executable( ${PROJECT_NAME} 
   "src/main.cpp"
   "src/abstract_visitor.cpp"
+  "src/static_visitor.cpp"
 )
 target_include_directories( ${PROJECT_NAME} PRIVATE include )
 target_link_libraries( ${PROJECT_NAME} PUBLIC fc )
