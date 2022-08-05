@@ -51,7 +51,7 @@ struct evaluator {
     {
         int result = expr.first_operand() - expr.second_operand();
         os << expr.first_operand() << " - " << expr.second_operand()
-                  << " = " << result << std::endl;
+           << " = " << result << std::endl;
 
         return result;
     }

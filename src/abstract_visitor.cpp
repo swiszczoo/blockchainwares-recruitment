@@ -6,9 +6,6 @@
 
 namespace abstract {
 
-
-/* visitor implementation */
-
 abstract_visitor_impl::abstract_visitor_impl(std::ostream& ostream) noexcept
     : _os(ostream)
 {

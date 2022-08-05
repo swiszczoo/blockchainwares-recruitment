@@ -37,9 +37,9 @@ TEST(visitors, static_visitor)
     static_v::static_visitor_impl instance { oss };
 
     using expr_t = fc::static_variant<
-        static_v::add, 
-        static_v::sub, 
-        static_v::mul, 
+        static_v::add,
+        static_v::sub,
+        static_v::mul,
         static_v::div>;
 
     expr_t expr1 = static_v::add { 1, 2 };
